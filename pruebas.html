@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualización de datos en círculo</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Visualización de datos en círculo</h1>
+  
+  <canvas id="chart" width="400" height="400"></canvas>
+
+  <script>
+    // Datos de ejemplo
+    const datos = {
+      labels: ['Dato 1', 'Dato 2', 'Dato 3', 'Dato 4', 'Dato 5'],
+      valores: [20, 30, 10, 15, 25],
+      colores: ['red', 'blue', 'green', 'orange', 'purple']
+    };
+
+    // Configurar el gráfico
+    var ctx = document.getElementById('chart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'radar', // Cambiar a 'pie' para un gráfico de pastel
+      data: {
+        labels: datos.labels,
+        datasets: [{
+          label: 'Datos',
+          data: datos.valores,
+          backgroundColor: datos.colores,
+          borderColor: 'rgba(0, 0, 0, 0.2)', // Color del borde
+          borderWidth: 1
+        }]
+      },
+      options: {
+        // Configuraciones adicionales, como leyenda, escalas, etc.
+        scale: {
+          ticks: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+
